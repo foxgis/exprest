@@ -1,6 +1,11 @@
 const router = require('express').Router()
-const locations = require('./controllers/location')
+const users = require('./controllers/user')
 
 
-router.get('locations', locations.query)
-router.post('locations', locations.upload)
+router.post('/users', users.create)
+router.get('/users/:username', users.retrieve)
+router.patch('/users/:username', users.update)
+router.delete('/users/:username', users.delete)
+
+
+module.exports = router

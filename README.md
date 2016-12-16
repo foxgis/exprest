@@ -1,2 +1,2 @@
 # exprest
-An RESTful API  server boilerplate using express 
+An RESTful API  server boilerplate using express and mongodb

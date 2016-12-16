@@ -1,23 +1,19 @@
 const mongoose = require('mongoose')
 
 
-mongoose.connect('mongodb://localhost/zootopia')
+mongoose.connect('mongodb://localhost/exprest')
 
-/* eslint-disable no-console */
 mongoose.connection.on('connected', function() {
   console.log('Mongoose connected')
 })
-
 
 mongoose.connection.on('error', function(err) {
   console.log('Mongoose connection error: ' + err.message)
 })
 
-
 mongoose.connection.on('disconnected', function() {
   console.log('Mongoose disconnected')
 })
-
 
 process.on('SIGINT', function() {
   mongoose.connection.close(function () {
