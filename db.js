@@ -1,23 +1,25 @@
 const mongoose = require('mongoose')
 
 
-mongoose.connect('mongodb://localhost/exprest')
+const db = 'mongodb://localhost/exprest'
 
-mongoose.connection.on('connected', function() {
-  console.log('Mongoose connected')
+mongoose.connect(db, { useMongoClient: true })
+
+mongoose.connection.on('connected', () => {
+  console.log(`Mongoose connected to ${db}`)
 })
 
-mongoose.connection.on('error', function(err) {
-  console.log('Mongoose connection error: ' + err.message)
+mongoose.connection.on('error', err => {
+  console.log(`Mongoose connection error: ${err.message}`)
 })
 
-mongoose.connection.on('disconnected', function() {
-  console.log('Mongoose disconnected')
+mongoose.connection.on('disconnected', () => {
+  console.log(`Mongoose disconnected to ${db}`)
 })
 
-process.on('SIGINT', function() {
-  mongoose.connection.close(function () {
-    console.log('Mongoose default connection disconnected through app termination')
+process.on('SIGINT', () => {
+  mongoose.connection.close(() => {
+    console.log('Mongoose disconnected through app termination')
     process.exit(0)
   })
 })

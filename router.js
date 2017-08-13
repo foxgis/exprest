@@ -2,8 +2,9 @@ const router = require('express').Router()
 const users = require('./controllers/user')
 
 
+// User API
+router.get('/users/:username', users.get)
 router.post('/users', users.create)
-router.get('/users/:username', users.retrieve)
 router.patch('/users/:username', users.update)
 router.delete('/users/:username', users.delete)
 
