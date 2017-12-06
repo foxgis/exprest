@@ -8,10 +8,6 @@ const methodOverride = require('method-override')
 const cors = require('cors')
 const router = require('./router')
 
-
-// connect to db
-require('./db')
-
 const app = express()
 app.set('json spaces', 2)
 app.set('trust proxy', true)
@@ -20,7 +16,7 @@ app.use(compression())
 app.use(helmet())
 app.use(cors())
 app.use(morgan('dev'))
-app.use(bodyParser.json({ limit: '1mb' }))
+app.use(bodyParser.json({ limit: '5mb' }))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride())
 app.use(cookieParser())
@@ -46,6 +42,5 @@ app.use((err, req, res, next) => {
       undefined
   })
 })
-
 
 module.exports = app
