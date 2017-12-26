@@ -2,13 +2,23 @@
   "name": "exprest",
   "version": "1.0.0",
   "private": true,
+  "bin": "./bin/www",
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint *.js --fix",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "pkg": "pkg . --out-path=dist/"
   },
   "engines": {
     "node": ">=6"
+  },
+  "pkg": {
+    "assets": [],
+    "targets": [
+      "node6-macos-x64",
+      "node6-linux-x64",
+      "node6-win-x64"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -16,12 +26,13 @@
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.1",
     "debug": "^3.0.0",
-    "express": "^4.15.4",
+    "express": "^4.16.2",
     "helmet": "^3.1.0",
     "method-override": "^2.3.7",
     "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "eslint": "^4.4.1"
+    "eslint": "^4.14.0",
+    "pkg": "^4.3.0-beta.5"
   }
 }
