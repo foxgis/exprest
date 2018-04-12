@@ -8,6 +8,7 @@ const createError = require('http-errors')
 const router = require('./router')
 
 const app = express()
+
 app.set('json spaces', 2)
 app.set('trust proxy', true)
 
@@ -32,9 +33,10 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500)
   res.json({
     message: err.message,
-    error: process.env.NODE_ENV === 'development'
-      ? err.stack && err.stack.split('\n')
-      : []
+    error:
+      process.env.NODE_ENV === 'development'
+        ? err.stack && err.stack.split('\n')
+        : []
   })
 })
 
