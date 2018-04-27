@@ -5,7 +5,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
 const createError = require('http-errors')
-const router = require('./router')
+const routes = require('./routes')
 
 const app = express()
 
@@ -20,7 +20,7 @@ app.use(express.json({ limit: '5mb' }))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
-app.use('/api/v1', router)
+app.use('/api/v1', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
