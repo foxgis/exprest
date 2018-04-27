@@ -15,7 +15,11 @@
   },
   "pkg": {
     "assets": [],
-    "targets": ["node6-macos-x64", "node6-linux-x64", "node6-win-x64"]
+    "targets": [
+      "node6-macos-x64",
+      "node6-linux-x64",
+      "node6-win-x64"
+    ]
   },
   "dependencies": {
     "compression": "^1.7.2",
