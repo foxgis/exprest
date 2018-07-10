@@ -5,7 +5,7 @@
   "bin": "./bin/www",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "npm run lint",
+    "test": "npm run format && npm run lint && npm run pkg",
     "lint": "eslint app/**/*.js",
     "format": "prettier-eslint --write app/**/*.js",
     "pkg": "pkg . --out-path=dist/"
@@ -15,23 +15,19 @@
   },
   "pkg": {
     "assets": [],
-    "targets": [
-      "node6-macos-x64",
-      "node6-linux-x64",
-      "node6-win-x64"
-    ]
+    "targets": []
   },
   "dependencies": {
     "compression": "^1.7.2",
     "cors": "^2.8.1",
-    "dotenv": "^5.0.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.12.0",
     "http-errors": "^1.6.3",
     "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "pkg": "^4.3.1",
