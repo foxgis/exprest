@@ -4,9 +4,14 @@
  * Load and set default environment variables.
  */
 
-require('dotenv').config();
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-process.env.PORT = process.env.PORT || '3000';
+var path = require('path')
+var dotenv = require('dotenv');
+
+// Load user-specified environment variables.
+dotenv.config({ path: path.resolve('.env')})
+
+// Load default environment variables.
+dotenv.config({ path: path.join(__dirname, '../.env.default')})
 
 /**
  * Module dependencies.
