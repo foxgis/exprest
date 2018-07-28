@@ -4,14 +4,14 @@
  * Load and set default environment variables.
  */
 
-var path = require('path')
+var path = require('path');
 var dotenv = require('dotenv');
 
 // Load user-specified environment variables.
-dotenv.config({ path: path.resolve('.env')})
+dotenv.config({ path: path.resolve('.env')});
 
 // Load default environment variables.
-dotenv.config({ path: path.join(__dirname, '../.env.default')})
+dotenv.config({ path: path.join(__dirname, '../.env.default')});
 
 /**
  * Module dependencies.
