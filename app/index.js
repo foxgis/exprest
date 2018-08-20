@@ -18,7 +18,7 @@ app.use(express.json({ limit: '5mb' }))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
-app.use('/api/v1', routes)
+app.use('/api', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
