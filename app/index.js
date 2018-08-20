@@ -3,7 +3,6 @@ const compression = require('compression')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
-const createError = require('http-errors')
 const routes = require('./routes')
 
 const app = express()
@@ -23,7 +22,7 @@ app.use('/api/v1', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404))
+  next({ status: 404, message: 'Invalid URL.' })
 })
 
 // error handler
