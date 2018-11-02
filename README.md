@@ -1,37 +1,54 @@
 # exprest
 
-> A simple RESTful API server boilerplate using express
+> 一款RESTful API快速开发脚手架
 
 
-## Features
+## 介绍
 
-- Provide versioned API endpoint.
-- Support `.env` enviroment file.
-- Use `pkg` to package as binary files.
+exprest主要用来快速搭建RESTful API服务。
 
 
-## Getting started
+## 安装
 
-> You need to install Nodejs(>= 6) and Yarn.
-
-```
-yarn          // Install dependencies
-yarn start    // Start the server, the default endpoint is localhost:3000/api
-yarn test     // Test
-yarn dist     // Package as binary files.
-```
+系统采用Nodejs开发，使用yarn管理依赖。当前仅提供Linux环境下的部署文件，推荐使用**Ubuntu 16.04 LTS**部署。如需Windows、macOS平台的部署文件，请联系开发人员。
 
 
-## API
+### 编译打包
 
-API endpoint is constructed as follows:
+此步骤将系统编译打包为一个二进制文件，便于下一步部署。编译打包的步骤为：
 
-```
-localhost:3000/api/{service}/{version}
-```
+1. 安装依赖：进入源代码目录，运行`yarn`安装相关依赖；
+2. 编译打包：运行`yarn dist`进行自动编译打包，将在`dist`目录下生成二进制部署文件；
 
-Avaliable APIs:
+### 安装部署
+
+安装部署系统需要二进制主程序复制到服务器上，在命令行中切换到部署目录，然后输入`exprest`即可启动。
+
+`exprest`默认的运行端口号是`3000`，如果需要改为其他端口，可以在启动时使用如下命令：
 
 ```
-localhost:3000/api/hello/v1
+set PORT=8080 && exprest
+```
+
+### 进程守护
+
+在生产环境下，通常会使用进程守护程序，当系统遇到错误崩溃时，进程守护程序会自动重启，保证系统的可用性。推荐使用`PM2`作为进程守护，使用以下命令以进程守护方式启动系统：
+
+```
+pm2 start exprest
+```
+
+使用以下命令停止系统：
+
+```
+pm2 delete exprest
+```
+
+
+## 服务接口
+
+### hello接口
+
+```
+GET /api/hello/v1
 ```

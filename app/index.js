@@ -1,17 +1,16 @@
 const express = require('express')
 const compression = require('compression')
-const helmet = require('helmet')
 const morgan = require('morgan')
 const cors = require('cors')
 const routes = require('./routes')
 
 const app = express()
 
+app.disable('x-powered-by')
 app.set('json spaces', 2)
 app.set('trust proxy', true)
 
 app.use(morgan(process.env.NODE_ENV === 'development' ? 'dev' : 'common'))
-app.use(helmet())
 app.use(cors())
 app.use(compression())
 app.use(express.json({ limit: '5mb' }))
@@ -22,19 +21,18 @@ app.use('/api', routes)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next({ status: 404, message: 'Invalid URL.' })
+  next({ status: 404, message: 'URL错误，请检查URL是否正确。' })
 })
 
 // error handler
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
+  if (err.code === 'ENOENT') return res.sendStatus(404)
+
   res.status(err.status || 500)
   res.json({
     message: err.message,
-    error:
-      process.env.NODE_ENV === 'development'
-        ? err.stack && err.stack.split('\n')
-        : []
+    error: process.env.NODE_ENV === 'development' ? err.stack && err.stack.split('\n') : []
   })
 })
 
