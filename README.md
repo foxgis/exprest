@@ -10,7 +10,7 @@ exprest主要用来快速搭建RESTful API服务。
 
 ## 安装
 
-系统采用Nodejs开发，使用yarn管理依赖。当前仅提供Linux环境下的部署文件，推荐使用**Ubuntu 16.04 LTS**部署。如需Windows、macOS平台的部署文件，请联系开发人员。
+系统采用Nodejs开发，使用yarn管理依赖。
 
 
 ### 编译打包
@@ -50,5 +50,5 @@ pm2 delete exprest
 ### hello接口
 
 ```
-GET /api/hello/v1
+GET /api/v1/hello
 ```

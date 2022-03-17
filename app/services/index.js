@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const hello = require('./services/hello')
+const hello = require('./hello')
 
 router.use(hello)
 

@@ -4,45 +4,39 @@
   "private": true,
   "bin": "./bin/www",
   "scripts": {
+    "prepare": "husky install",
     "start": "node ./bin/www",
+    "dev": "nodemon",
     "test": "npm run lint",
     "lint": "eslint app/**/*.js",
     "format": "prettier-eslint --write app/**/*.js",
-    "dist": "pkg . --out-path=dist/ --targets=linux"
+    "dist": "pkg . --out-path=./dist --targets=host --compress=GZip"
   },
   "engines": {
-    "node": ">=8"
-  },
-  "pkg": {
-    "assets": []
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "node": ">=12"
   },
   "lint-staged": {
     "app/**/*.js": [
-      "prettier-eslint",
-      "git add"
+      "prettier-eslint --write"
     ]
   },
   "dependencies": {
     "compression": "^1.7.2",
     "cors": "^2.8.1",
-    "dotenv": "^6.0.0",
+    "dotenv": "^16.0.0",
     "express": "^4.16.3",
-    "helmet": "^3.12.0",
+    "helmet": "^5.0.2",
     "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
-    "pkg": "^4.3.1",
-    "prettier": "^1.11.1",
-    "prettier-eslint-cli": "^4.7.1"
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.6",
+    "nodemon": "^2.0.15",
+    "pkg": "^5.5.2",
+    "prettier": "^2.6.0",
+    "prettier-eslint-cli": "^5.0.1"
   }
 }
