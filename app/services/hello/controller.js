@@ -1,3 +1,3 @@
-module.exports.get = (req, res, next) => {
+module.exports.get = async (req, res) => {
   res.json({ hello: 'world' })
 }
