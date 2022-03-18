@@ -10,7 +10,8 @@
     "test": "npm run lint",
     "lint": "eslint app/**/*.js",
     "format": "prettier-eslint --write app/**/*.js",
-    "dist": "pkg . --out-path=./dist --targets=host --compress=GZip"
+    "dist": "pkg . --out-path=./dist --targets=host --compress=GZip",
+    "docker": "docker build -t exprest ."
   },
   "engines": {
     "node": ">=12"
