@@ -5,10 +5,11 @@ const compression = require('compression')
 const morgan = require('morgan')
 const cors = require('cors')
 const createError = require('http-errors')
+const { router } = require('express-file-routing')
 
 // Load environment variables
 dotenv.config({ path: path.resolve('.env') })
-dotenv.config({ path: path.join(__dirname, '../.env.default') })
+dotenv.config({ path: path.join(__dirname, '.env.default') })
 
 const app = express()
 
@@ -20,10 +21,10 @@ app.set('json replacer', (_k, v) => (v === null ? undefined : v)) // omit null v
 app.use(morgan(process.env.LOG_FORMAT))
 app.use(cors())
 app.use(compression())
-app.use(express.json({ limit: '5mb' }))
+app.use(express.json({ limit: process.env.JSON_LIMIT }))
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/api/v1', require('./services'))
+app.use('/api/v1', router({ directory: path.resolve('routes') }))
 app.use(express.static('public'))
 
 // catch 404 and forward to error handler
