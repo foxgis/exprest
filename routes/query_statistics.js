@@ -17,8 +17,9 @@ module.exports.post = asyncHandler(async (req, res, next) => {
 
   const groups = Object.groupBy(data, ({ layerName }) => layerName)
 
-  for (const [key, value] of Object.entries(groups)) {
-    result.push({ layerName: key, features: value })
+  for (let [layerName, features] of Object.entries(groups)) {
+    features = features.filter(({ geometry}) => geometry)
+    result.push({ layerName, features })
   }
 
   return res.json(result)
